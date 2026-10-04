@@ -20,3 +20,7 @@ Every implemented model needs a simple reference path and an experiment brief. S
 Keep **visual plausibility**, **implementation agreement**, **numerical convergence**, and **predictive validity** separate. A successful native/WASM/GPU build establishes none of those by itself. CPU/GPU agreement does not prove model validity.
 
 For future adaptive claims, include discovery, tracking, prediction, checking, exchanges/coupling, transition, and recovery overheads. Record rejected transitions and lost information. A slower method may still be a useful observation tool; report it accurately.
+
+## Historical reports awaiting reproduction
+
+The [PAN-RAD report](pan-rad-reported.md) preserves an earlier assistant's radiation–matter method, algorithm sketch, reported checks, and the negative comparison against fixed-block preconditioning. Its original executable artifacts and outputs have not been recovered or independently rerun. It is a source report, not a numerical reference result for PlasmaLab. Keep that distinction when recovering or extending the prototype.

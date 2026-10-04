@@ -89,3 +89,19 @@ struct SelfState {
 ```
 
 What survives is a narrow scientific/execution boundary and prediction records. What does not follow is that every model exposes one borrowed scalar render field, that arbitrary caller-selected timesteps are valid, or that one unexplained confidence number establishes predictive authority. Concrete contracts must name observations, horizons, units, errors and supported operations as the ladder requires. Graph type suggestions and ping-pong buffer diagrams were likewise illustrative; no original GPU kernel or executable prototype was supplied here.
+
+### Direct user choice and the initial pattern proposals
+
+The subsequent review of the architecture conversation itself supplies the missing user decision, not just the assistant excerpts. After the assistant initially favored the middle architecture as an ambition/maintainability compromise, the user chose:
+
+> lets build around 3, which is what we are aiming for, and take 1 and 2 as milestones to keep the dopamine high.
+
+The user then requested high-level, long-term choices rather than implementation detail in `ladder.md`. This adopts the destination and rewarding milestone strategy, not every library, model, numerical schedule, or trait in the assistant's sketches. See [direct-chat review coverage](../source-inventory.md#architecture-chat-review-coverage).
+
+The first patterns response proposed **dense numerical computation and sparse detected identities**: structure-of-arrays for particle populations and fields, with objects/IDs/histories or an ECS-like layer for the much smaller set of recognized structures. The reason was to keep bulk numerical work distinct from the evolving ontology, not to impose an object or autonomous agent on every microscopic sample. No ECS library was selected. The illustrated millions of values and handful of entities were not performance measurements.
+
+For neighborhood updates, ping-pong state was proposed so all reads see the old state before the new one replaces it. That is a proposed update pattern, not a universal integrator or a justification for the pictured PIC pass order. Explicit stages and demand-driven derived observations were intended to expose dependencies and share work, not to require a generic engine before a second actual use exists.
+
+The detector/tracker distinction was operational: detection proposes regions at one observation time; tracking proposes continuity using overlap, topology, velocity, flux, size, internal state, or prior prediction. These are candidate association cues, not a selected identity algorithm. Birth/split/merge/disappearance events were proposed for navigation and explanation; a lineage log alone does not provide the checkpoints or replay needed to seek a past physical state.
+
+Early diagrams put rendering on the main thread, while later GPU sketches co-located compute and presentation near GPU buffers. The actual worker/canvas/device ownership and transfer path remain unresolved; no demonstrated zero-copy bridge was supplied. Likewise, the optional audio proposal mapped density oscillation to pitch, magnetic energy to level, reconnection events to transients, coherence to tonal purity, and turbulence to noise. These are presentation mappings to test for usefulness, not literal plasma sound or additional measured physics.
