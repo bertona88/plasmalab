@@ -6,6 +6,8 @@ A browser laboratory for building intuition about plasmas.
 
 Read [the ladder](docs/ladder.md) for the project direction and the [SELFS abstract](docs/SELFS_WOFI_abstract.md) for the research hypothesis. Both source documents are preserved as supplied.
 
+The [project context](docs/project-context.md) preserves the motivation, distinguishes chosen direction from implementation proposals, and lists the open choices for the first experiment.
+
 ## Current state
 
 This is the repository foundation, before Rung 1. It includes a runnable Svelte project shell, a small dependency-free Rust scientific core, formatting, checks, and CI. The core validates named measurement requirements and distinguishes evidence and result kinds.
@@ -58,6 +60,6 @@ Do not create a crate for every future idea. Split implementations when a real s
 
 ## Next useful increment
 
-Build the [charge-separation experiment](docs/experiments/charge-separation.md): set conditions, disturb, observe, pause, inspect, save, export, and reopen with assumptions intact. The [roadmap](docs/roadmap.md) defines the evidence required before climbing each rung.
+The proposed starting point is the [charge-separation experiment](docs/experiments/charge-separation.md): set conditions, disturb, observe, pause, inspect, save, export, and reopen with assumptions intact. The [roadmap](docs/roadmap.md) defines the evidence required before climbing each rung.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development and [AGENTS.md](AGENTS.md) for coding-agent guidance. Completed work belongs in committed, pushed, remotely verified history.

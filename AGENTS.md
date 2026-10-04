@@ -2,6 +2,8 @@
 
 Read `docs/ladder.md` before architectural work. It is the direction; `docs/SELFS_WOFI_abstract.md` is a research hypothesis, not a validated algorithm. Consult `docs/architecture/0001-foundation.md` and `docs/roadmap.md` for the current implementation scope.
 
+Read `docs/project-context.md` for motivation and decision provenance. In particular, the first oscillator experiment is an assistant proposal, not a model choice mandated by the user or the ladder.
+
 ## Ownership
 
 - Rust owns scientific rules, assumptions, units, validation, and model semantics.
