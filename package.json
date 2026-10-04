@@ -10,16 +10,25 @@
     "apps/web"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace @plasmalab/web",
-    "build": "npm run build --workspace @plasmalab/web",
-    "preview": "npm run preview --workspace @plasmalab/web",
+    "dev": "npm run build:wasm && npm run dev --workspace @plasmalab/web",
+    "build": "npm run build:wasm && npm run build --workspace @plasmalab/web",
+    "preview": "npm run preview --workspace @plasmalab/web --",
     "check": "npm run check --workspace @plasmalab/web",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check:rust": "cargo fmt --all --check && cargo clippy --workspace --all-targets --locked -- -D warnings && cargo test --workspace --locked",
-    "verify": "npm run format:check && npm run check && npm run build && npm run check:rust"
+    "verify": "npm run build:wasm && npm run check:contracts && npm run format:check && npm run check && npm run check:tests && npm run build && npm run test:wasm && npm run check:rust",
+    "build:wasm": "node scripts/build-wasm.mjs",
+    "test:browser": "playwright test",
+    "test:wasm": "node scripts/check-wasm.mjs",
+    "check:contracts": "cargo run --locked --example export_types -- --check",
+    "generate:contracts": "cargo run --locked --example export_types",
+    "benchmark:wasm": "node scripts/benchmark-wasm.mjs",
+    "check:tests": "tsc --noEmit --strict --skipLibCheck --target ESNext --module ESNext --moduleResolution Bundler --types node tests/laboratory.spec.ts playwright.config.ts"
   },
   "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "24.10.1",
     "prettier": "3.6.2",
     "prettier-plugin-svelte": "3.4.0"
   }

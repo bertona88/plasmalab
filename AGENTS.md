@@ -2,7 +2,7 @@
 
 Read `docs/ladder.md` before architectural work. It is the direction; `docs/SELFS_WOFI_abstract.md` is a research hypothesis, not a validated algorithm. Consult `docs/architecture/0001-foundation.md` and `docs/roadmap.md` for the current implementation scope.
 
-Read `docs/project-context.md` for motivation and decision provenance. In particular, the first oscillator experiment is an assistant proposal, not a model choice mandated by the user or the ladder.
+Read `docs/project-context.md` for motivation and decision provenance. The user’s implementation mission selects the plasmoid/reconnection-inspired toy as the first slice; the earlier oscillator-first idea remains an unimplemented assistant proposal. Read `docs/architecture/0002-toybox.md` and `docs/experiments/plasmoid-ecology.md` before changing the toy rules or checkpoint semantics.
 
 Consult `docs/source-inventory.md` before relying on earlier chats or prototypes. A summarized or referenced source is not a reviewed original; recover missing material before treating its supposed decisions or results as established.
 

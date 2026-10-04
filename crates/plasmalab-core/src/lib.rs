@@ -1,8 +1,37 @@
 //! Scientific meaning, independent of rendering, storage, and execution.
 //!
-//! This foundation contains a measurement requirement and evidence vocabulary.
-//! It does not yet define an experiment save format, a solver, or a SELF engine.
+//! The bounded flux toy is an invented teaching model, not MHD or PIC.
 //! Values use the explicitly documented conventions of their experiment.
+
+pub mod contract;
+mod detector;
+pub mod model;
+
+use wasm_bindgen::prelude::*;
+
+/// The execution boundary owns authoritative state; the browser only sends commands.
+#[wasm_bindgen]
+pub struct Lab {
+    model: model::FluxToy,
+}
+
+#[wasm_bindgen]
+impl Lab {
+    #[wasm_bindgen(constructor)]
+    pub fn new(preset: &str) -> Result<Lab, JsValue> {
+        model::FluxToy::new(preset)
+            .map(|model| Self { model })
+            .map_err(|error| JsValue::from_str(&error))
+    }
+
+    pub fn dispatch(&mut self, command_json: &str) -> String {
+        let response = serde_json::from_str(command_json)
+            .map_err(|error| format!("Invalid command: {error}"))
+            .and_then(|command| self.model.dispatch(command));
+        let response = response.unwrap_or_else(contract::Response::error);
+        serde_json::to_string(&response).expect("validated model responses are finite")
+    }
+}
 
 use std::fmt;
 

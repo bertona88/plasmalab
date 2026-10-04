@@ -1,6 +1,6 @@
-# First experiment brief — displace, release, observe
+# Experiment option — displace, release, observe
 
-Status: proposed first vertical slice; no solver is implemented.
+Status: historical assistant proposal, unimplemented. The user’s 2026-10-04 implementation mission selected the [plasmoid/reconnection-inspired toy](plasmoid-ecology.md) as the first vertical slice. This brief remains a possible later analytic-reference experiment.
 
 ## Question and experience
 
@@ -27,4 +27,4 @@ Use a fixed-step Rust numerical implementation and an independent analytic oscil
 
 The question about a disturbed electron–ion system, experiment identity, interventions, observations, reference comparisons, and durable history. A later spatial electrostatic/kinetic experiment can investigate richer responses, but it needs an explicit mapping of parameters and observables. An oscillator state cannot simply be reinterpreted as a particle distribution. This model alone does not justify structure detection, SELF compression, or a representation transition.
 
-The [electron POV discussion](../project-context.md#recovered-conversation-interaction-response-and-reciprocity) motivates inspecting influence, response, and exchange. This experiment offers a collective restoring response under a fixed ion background; it does not independently evolve spatial electromagnetic fields or ion recoil. Any optional POV presentation must state that correspondence rather than claim a complete reciprocal electron–field simulation or subjective experience. This limitation preserves the proposed first slice; no broader solver requirement follows from the metaphor.
+The [electron POV discussion](../project-context.md#recovered-conversation-interaction-response-and-reciprocity) motivates inspecting influence, response, and exchange. This experiment offers a collective restoring response under a fixed ion background; it does not independently evolve spatial electromagnetic fields or ion recoil. Any optional POV presentation must state that correspondence rather than claim a complete reciprocal electron–field simulation or subjective experience. This limitation preserves the scope of this optional experiment; no broader solver requirement follows from the metaphor.

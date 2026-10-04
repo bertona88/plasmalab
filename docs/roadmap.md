@@ -9,25 +9,27 @@ The source [ladder](ladder.md) defines the destination. This checklist tracks de
 - [x] Add a truthful browser shell, scientific requirement validation, and CI configuration.
 - [x] Define the first proposed experiment and scientific evidence expectations.
 
-## First vertical slice — next
+## First vertical slice — plasmoid-inspired toy
 
-Proposed thread: [charge separation and its restoring response](experiments/charge-separation.md).
+The user’s 2026-10-04 implementation mission selected the [plasmoid/reconnection-inspired toy](experiments/plasmoid-ecology.md), superseding the assistant’s earlier [oscillator proposal](experiments/charge-separation.md). The toy is an invented local-rule universe, not a quantitative plasma solver.
 
-- [ ] Implement one normalized oscillator model in Rust with an analytic reference and convergence checks.
-- [ ] Connect it through a narrow WASM/worker adapter; keep authoritative evolution out of TypeScript.
-- [ ] Set initial conditions, apply an explicit impulse, run/pause/step/reset, and inspect named observations.
-- [ ] Keep simulation time independent of frame rate; make overload reduce display cadence or simulated progress.
-- [ ] Show the assumptions, units, model version, and numerical diagnostics alongside the visualization.
-- [ ] Save locally, export/import, and reopen an actual state, retaining interventions and provenance.
-- [ ] Verify the complete loop in the browser, including unsupported save versions and recovery from storage failure.
+- [x] Implement one bounded 2D model in Rust, with validated parameter ranges and fixed toy timesteps.
+- [x] Connect it through a narrow WASM/worker adapter; keep authoritative evolution out of TypeScript.
+- [x] Run/pause/step/reset, choose four presets, change parameters and perturb the field directly.
+- [x] Keep simulation time independent of frame rate; slower execution reduces simulated progress.
+- [x] Show model assumptions and live stress, threshold-event and candidate-region observations.
+- [x] Detect modest candidate regions as observations with frame-local labels and no evolution authority.
+- [x] Save a versioned checkpoint in IndexedDB, export/import it, and restore actual state with intervention history.
+- [x] Reject invalid state and unsupported save/model versions before replacing a run.
+- [ ] Complete the recorded scientific, build and browser acceptance checks in [toybox evidence](evidence/toybox.md).
 
-**Gate:** a person discovers a cause-and-effect relationship, saves it, and returns to it with assumptions and state intact. The scaffold alone does not pass this gate.
+**Gate:** a person discovers a cause-and-effect relationship, saves it, and returns to it with assumptions and state intact. Passing invariant and interaction checks supports this toy loop; it does not validate physical reconnection or establish MHD/PIC accuracy.
 
 ## Rung 1 — Plasma Toybox
 
-- [ ] Ship the first full loop above; make it rewarding to open and explore.
+- [x] Implement the first full toy loop above, with visible invented rules and limitations.
+- [ ] Use the recorded acceptance evidence to confirm the release gate, including browser resumption.
 - [ ] Add further experiments only when each introduces a useful question and preserves the existing loop.
-- [ ] Clearly label invented/toy rules and distinguish them from physical approximations.
 
 ## Rung 2 — Browser Plasma Laboratory
 

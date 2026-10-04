@@ -1,6 +1,6 @@
 # Evidence and reference cases
 
-There are no numerical reference results yet. The current Rust unit tests validate measurement requirements; they are not physics validation.
+The [toybox evidence record](toybox.md) records the bounded-flux model’s implementation checks, integration checks and measured costs. These do not establish a physical plasma reference result. The historical reports below remain separate from independently reproduced work.
 
 Every implemented model needs a simple reference path and an experiment brief. Store small reproducible configurations and summaries here; keep large outputs out of git and record their durable location and content hash when needed.
 

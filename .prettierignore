@@ -5,3 +5,7 @@ package-lock.json
 Cargo.lock
 docs/ladder.md
 docs/SELFS_WOFI_abstract.md
+
+apps/web/src/wasm
+apps/web/src/generated
+playwright-report

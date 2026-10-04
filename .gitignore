@@ -8,3 +8,6 @@ test-results/
 .env
 .env.*
 !.env.example
+
+apps/web/src/wasm/
+playwright-report/

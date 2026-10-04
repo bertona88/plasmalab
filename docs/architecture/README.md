@@ -1,25 +1,25 @@
 # Architecture boundaries
 
-The [ladder](../ladder.md) is authoritative direction. [Decision 0001](0001-foundation.md) translates it into the smallest current repository structure.
+The [ladder](../ladder.md) is authoritative direction. [Decision 0001](0001-foundation.md) records the foundation; [decision 0002](0002-toybox.md) records the implemented toy and browser execution boundary.
 
-| Concern              | Owner                                           | Current implementation                                  | Next concrete addition                                |
-| -------------------- | ----------------------------------------------- | ------------------------------------------------------- | ----------------------------------------------------- |
-| Scientific meaning   | Rust                                            | Measurement requirements and evidence/result categories | One model, its assumptions, and reference diagnostics |
-| Numerical execution  | Model-specific Rust baseline; later WGSL/WebGPU | None                                                    | Fixed-step CPU baseline, then browser WASM adapter    |
-| Human experience     | TypeScript/Svelte                               | Honest foundation shell and roadmap links               | Experiment controls and observation view              |
-| Local continuity     | Browser APIs                                    | None                                                    | Versioned save/reopen plus file export/import         |
-| Scientific evidence  | Rust tests and experiment evidence records      | Input-validation unit tests only                        | Analytic comparison and timestep convergence          |
-| SELFS interpretation | Future observers/predictors                     | None                                                    | Only after a measured reference run exists            |
+| Concern              | Owner                                        | Current implementation                                                 | Next concrete addition                                           |
+| -------------------- | -------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Scientific meaning   | Rust                                         | Toy model, validated parameters, diagnostics and checkpoint validation | A selected physical reference model with explicit correspondence |
+| Numerical execution  | Rust/WASM in a worker; later WGSL/WebGPU     | Fixed-step CPU toy                                                     | Acceleration only after profiling and agreement checks           |
+| Human experience     | TypeScript/Svelte                            | Field display, controls, interventions and diagnostics                 | Improve inspection using model-supported observations            |
+| Local continuity     | Browser APIs and Rust validation             | Versioned IndexedDB checkpoint plus JSON export/import                 | Explicit migrations when a real schema change needs one          |
+| Scientific evidence  | Rust and integration tests, evidence records | Toy invariant and persistence checks                                   | Physical reference errors and convergence                        |
+| SELFS interpretation | Rust observation-only detector               | Frame-local candidate regions                                          | Tested continuity before histories or predictions                |
 
 ## Contracts to preserve
 
 An **experiment** owns the question, conventions, requested measurements and accuracy, initial conditions, and interventions. A **run** names a specific model/representation version, execution configuration, and evolution. A **checkpoint** carries enough model-specific state for the promised resumption. An **observation** names its run, simulation time, observable, units, method, and applicable uncertainty. A **presentation** projects observations for a person.
 
-These are responsibilities, not a requirement to implement five frameworks today. There is no canonical full save schema yet. Introduce it with the first real state to save, version it from the beginning, and keep experiment identity independent of execution. Do not publish an empty envelope as a restart format.
+These are responsibilities, not five generic frameworks. The toy now has a concrete versioned checkpoint containing experiment metadata and model-specific fields. Keep experiment identity independent of execution; another model must define its own state rather than reinterpret the toy’s arrays.
 
-Rust is the authority for scientific contracts. Once the first browser integration requires serialized types, derive or generate the wire schema from Rust and check it for drift in CI; do not hand-maintain independent physics definitions in TypeScript. This scaffold has no duplicated wire contract.
+Rust is the authority for scientific contracts. The toy integration generates its browser wire types from Rust and checks them for drift. Do not hand-maintain independent physics definitions in TypeScript.
 
-The interface will request operations such as an intervention or a named observation through a narrow adapter. It must not depend on a live mutable Rust array, a GPU buffer layout, or rendering geometry as physical state. Keep large state near execution and transfer bounded observations. A worker can host the first real WASM run when that slice is built; worker code is not needed for today's static shell.
+The interface requests interventions and observations through a narrow worker adapter. It receives disposable presentation samples; it has no live mutable Rust array or GPU-buffer ownership. Keep large state near execution as models grow. The first CPU/WASM worker establishes this boundary without claiming that copying a complete larger grid every display frame would scale.
 
 ## Boundaries for later work
 
@@ -33,13 +33,13 @@ The interface will request operations such as an intervention or a named observa
 
 ## Persistence acceptance criteria
 
-The first save format must preserve experiment identity, model and representation versions, conventions, initial conditions, interventions at simulation times, important observations, and the state needed for the documented resume behavior. Export/import is required alongside local storage. History alone is not a checkpoint.
+A save format must preserve experiment identity, model and representation versions, conventions, initial conditions, interventions at simulation times, important observations, and the state needed for the documented resume behavior. Export/import is required alongside local storage. History alone is not a checkpoint.
 
 Reject unsupported versions or corrupt/nonfinite state visibly; never silently reset the experiment or guess a migration. Schema migration must preserve known meaning and identify any lost capability. Deterministic replay is only promised where tested; otherwise record numerical tolerances and environment information for comparisons.
 
 ## Recovered alternatives and design sketches
 
-Basis: the separately supplied “Computational Architecture Patterns” excerpts, recorded in the [source inventory](../source-inventory.md#computational-architecture-patterns). These were **assistant proposals**, not additional adopted decisions. They explain alternatives behind the ladder; [decision 0001](0001-foundation.md) still describes the current foundation.
+Basis: the separately supplied “Computational Architecture Patterns” excerpts, recorded in the [source inventory](../source-inventory.md#computational-architecture-patterns). These were **assistant proposals**, not additional adopted decisions. They explain alternatives behind the ladder; [decision 0001](0001-foundation.md) records the original foundation and [decision 0002](0002-toybox.md) records the subsequent slice.
 
 The lean alternative put small Rust/WASM models behind a Svelte interface and Canvas/WebGL presentation, to ship and debug a complete interaction quickly. Its proposed direct simulation-array interface was convenient but risked tying the UI to CPU storage. The browser-laboratory alternative added a simulation worker, resident GPU buffers and WGSL execution, transmitting commands and compact diagnostics instead of large state every frame. The moonshot added shadow predictors and a representation manager; it was not a reason to implement that machinery before a reference experiment existed.
 
@@ -104,4 +104,4 @@ For neighborhood updates, ping-pong state was proposed so all reads see the old 
 
 The detector/tracker distinction was operational: detection proposes regions at one observation time; tracking proposes continuity using overlap, topology, velocity, flux, size, internal state, or prior prediction. These are candidate association cues, not a selected identity algorithm. Birth/split/merge/disappearance events were proposed for navigation and explanation; a lineage log alone does not provide the checkpoints or replay needed to seek a past physical state.
 
-Early diagrams put rendering on the main thread, while later GPU sketches co-located compute and presentation near GPU buffers. The actual worker/canvas/device ownership and transfer path remain unresolved; no demonstrated zero-copy bridge was supplied. Likewise, the optional audio proposal mapped density oscillation to pitch, magnetic energy to level, reconnection events to transients, coherence to tonal purity, and turbulence to noise. These are presentation mappings to test for usefulness, not literal plasma sound or additional measured physics.
+Early diagrams put rendering on the main thread, while later GPU sketches co-located compute and presentation near GPU buffers. That source did not resolve worker/canvas/device ownership or supply a demonstrated zero-copy bridge. [Decision 0002](0002-toybox.md) subsequently selects a CPU/WASM worker with copied render samples and main-thread Canvas for the toy; future GPU ownership remains a separate design and validation task. Likewise, the optional audio proposal mapped density oscillation to pitch, magnetic energy to level, reconnection events to transients, coherence to tonal purity, and turbulence to noise. These are presentation mappings to test for usefulness, not literal plasma sound or additional measured physics.

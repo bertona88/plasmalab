@@ -2,66 +2,61 @@
 
 A browser laboratory for building intuition about plasmas.
 
-**Aim at adaptive SELFS. Ship through a useful Toybox and Laboratory.** The enduring objects are experiments, observations, and evidence; solvers and execution backends can improve around them.
+The first experiment is a **2D plasmoid/reconnection-inspired toy**: disturb an opposed-field sheet, change its loading and release threshold, and inspect how patterns respond. It uses invented, bounded local rules in toy units. It is not quantitative MHD or PIC, and detected patches are not validated physical plasmoids or SELFS.
 
-Read [the ladder](docs/ladder.md) for the project direction and the [SELFS abstract](docs/SELFS_WOFI_abstract.md) for the research hypothesis. Both source documents are preserved as supplied.
+Run, pause, single-step and reset; choose four teaching presets; click or drag to perturb the field; inspect toy stress, release events and candidate regions; save a checkpoint locally or export it to a file. The in-app model panel explains the rules and assumptions. [The experiment brief](docs/experiments/plasmoid-ecology.md) gives the exact model and its limits.
 
-The [project context](docs/project-context.md) preserves the motivation, distinguishes chosen direction from implementation proposals, and lists the open choices for the first experiment.
-
-The [source inventory](docs/source-inventory.md) identifies which earlier chats and documents are preserved, known only through summaries or references, or still missing. This repo is not yet a complete project-context handoff.
-
-## Current state
-
-This is the repository foundation, before Rung 1. It includes a runnable Svelte project shell, a small dependency-free Rust scientific core, formatting, checks, and CI. The core validates named measurement requirements and distinguishes evidence and result kinds.
-
-**No simulation, WASM bridge, GPU kernel, persistence, structure detector, or adaptive representation is implemented yet.** The app marks its experiments and milestones as planned. The Rust core and browser shell build independently until the first experiment connects them.
+**Aim at adaptive SELFS. Ship through a useful Toybox and Laboratory.** Read [the ladder](docs/ladder.md) for the direction and the [SELFS abstract](docs/SELFS_WOFI_abstract.md) for the research hypothesis. Both source documents are preserved as supplied. [Project context](docs/project-context.md) and the [source inventory](docs/source-inventory.md) distinguish user decisions, historical proposals, reviewed sources and remaining gaps.
 
 ## Start locally
 
-Install Node.js 24 with npm and Rust through [rustup](https://rustup.rs/). The repository pins Rust and its WASM target in `rust-toolchain.toml`.
+Install Node.js 24 with npm and Rust through [rustup](https://rustup.rs/). The repository pins Rust and its WASM target in `rust-toolchain.toml`. Install the `wasm-bindgen` CLI version matching the locked Rust dependency, then build and run:
 
 ```sh
 npm ci
+cargo install wasm-bindgen-cli --version "$(node scripts/wasm-bindgen-version.mjs)" --locked
 npm run dev
 ```
 
-Open the local URL Vite prints. The shell needs neither Rust nor WebGPU to run. To work on the scientific core or run all checks:
+Open the local URL Vite prints. The development command builds Rust/WASM before starting Vite. After changing Rust, rerun the WASM build and reload the page. No WebGPU adapter or compute service is required.
 
-```sh
-npm run verify
-cargo check --workspace --locked --target wasm32-unknown-unknown
-```
+| Command                      | Purpose                                                                   |
+| ---------------------------- | ------------------------------------------------------------------------- |
+| `npm run dev`                | Build WASM and start the browser development server                       |
+| `npm run build:wasm`         | Rebuild the scientific model and browser WASM bindings                    |
+| `npm run generate:contracts` | Regenerate browser wire types after changing Rust contracts               |
+| `npm run check:contracts`    | Check generated Rust-to-TypeScript contract drift                         |
+| `npm run check`              | Check Svelte and TypeScript                                               |
+| `npm run build`              | Build WASM and the production app in `apps/web/dist`                      |
+| `npm run preview`            | Serve the production build locally                                        |
+| `npm run format`             | Format web code, configuration and authored docs                          |
+| `cargo fmt --all`            | Format Rust                                                               |
+| `npm run check:rust`         | Check Rust formatting, Clippy and unit tests                              |
+| `npm run verify`             | Run the repository verification gates                                     |
+| `npm run test:wasm`          | Test compiled WASM stepping, checkpoint continuation, rejection and reset |
+| `npm run test:browser`       | Exercise the browser interaction and persistence loop                     |
 
-Useful commands:
+Browser checks require Chromium: install it with `npx playwright install --with-deps chromium` on Linux (or `npx playwright install chromium` when system dependencies are already present). The [toybox evidence record](docs/evidence/toybox.md) describes the checks actually run and the measured performance scope.
 
-| Command              | Purpose                                           |
-| -------------------- | ------------------------------------------------- |
-| `npm run dev`        | Browser development server                        |
-| `npm run check`      | Svelte and TypeScript checks                      |
-| `npm run build`      | Production browser build in `apps/web/dist`       |
-| `npm run preview`    | Serve the production build locally                |
-| `npm run format`     | Format web code, configuration, and authored docs |
-| `cargo fmt --all`    | Format Rust                                       |
-| `npm run check:rust` | Rust formatting, Clippy, and unit tests           |
-| `npm run verify`     | All local foundation checks                       |
+## What is saved
+
+Save stores one versioned checkpoint in this browser’s IndexedDB. Saving again replaces that slot. Load restores the saved model state, parameters, intervention history, counters and random generator; it does not merely reopen settings. Reset restores the initial parameters and seed and clears intervention history. Export/import uses the same checkpoint as JSON so work can leave this browser. Local storage may be cleared; keep exported files for backup.
+
+The Rust model validates checkpoints before replacing a run. Unsupported versions and corrupt fields are rejected visibly. Same-environment continuation is the supported deterministic scope; identical numerical histories across every device or browser are not promised.
 
 ## Where things belong
 
-| Location                 | Responsibility                                                          |
-| ------------------------ | ----------------------------------------------------------------------- |
-| `apps/web/`              | TypeScript/Svelte interface; future browser storage and worker adapters |
-| `crates/plasmalab-core/` | Rust scientific meaning and validated requirements                      |
-| `kernels/`               | WGSL ownership and acceptance rules; no kernels yet                     |
-| `docs/ladder.md`         | Long-term direction                                                     |
-| `docs/architecture/`     | Boundaries and recorded decisions                                       |
-| `docs/experiments/`      | Experiment questions, assumptions, and milestone briefs                 |
-| `docs/evidence/`         | Evidence requirements and future reference results                      |
-| `.github/workflows/`     | Web, native Rust, and WASM compilation gates                            |
+| Location                 | Responsibility                                                                        |
+| ------------------------ | ------------------------------------------------------------------------------------- |
+| `apps/web/`              | Svelte interface, worker adapter, presentation and browser storage                    |
+| `crates/plasmalab-core/` | Rust model semantics, parameters, diagnostics, detector, serialization and validation |
+| `kernels/`               | WGSL ownership and acceptance rules; no kernels yet                                   |
+| `docs/ladder.md`         | Long-term direction                                                                   |
+| `docs/architecture/`     | Adopted boundaries and implementation decisions                                       |
+| `docs/experiments/`      | Implemented toy and future experiment questions                                       |
+| `docs/evidence/`         | Check results, scope and reproducibility instructions                                 |
+| `.github/workflows/`     | Build, type, formatting, Rust and WASM gates                                          |
 
-Do not create a crate for every future idea. Split implementations when a real second use needs it. No universal world state, backend registry, generic scheduler, or SELF authority machinery is needed for the first loop.
+[Decision 0002](docs/architecture/0002-toybox.md) explains the boundary: Rust owns evolving state and observations; the worker returns disposable presentation samples; Svelte sends commands. The timestep is fixed independently of screen updates. WebGPU is deferred until a measured need justifies it.
 
-## Next useful increment
-
-The proposed starting point is the [charge-separation experiment](docs/experiments/charge-separation.md): set conditions, disturb, observe, pause, inspect, save, export, and reopen with assumptions intact. The [roadmap](docs/roadmap.md) defines the evidence required before climbing each rung.
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development and [AGENTS.md](AGENTS.md) for coding-agent guidance. Completed work belongs in committed, pushed, remotely verified history.
+Candidate detection remains at **observe**. There is no identity tracking, split/merge classification, shadow prediction, adaptive representation or physical validation. [The roadmap](docs/roadmap.md) defines the next gates. See [CONTRIBUTING.md](CONTRIBUTING.md) for development and [AGENTS.md](AGENTS.md) for coding-agent guidance. Completed work belongs in committed, pushed, remotely verified history.
