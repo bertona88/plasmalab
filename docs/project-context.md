@@ -1,6 +1,6 @@
 # Project context and decision provenance
 
-Distilled from the supplied documents, available project-conversation summaries/excerpts, and the repository-setup discussion on 2026-10-03–04. On 2026-10-04, five retrieved turns from “Electron Experience Imagined” added the IRSF proposal below, and five available turns from “Plasma Pattern Zoology” added candidate families and experimental options. Other earlier context and prototype artifacts remain incomplete or unavailable. The [source inventory](source-inventory.md) records coverage and gaps.
+Distilled from the supplied documents, available project-conversation summaries/excerpts, and the repository-setup discussion on 2026-10-03–04. On 2026-10-04, five retrieved turns from “Electron Experience Imagined” added the IRSF proposal below, and five available turns from “Plasma Pattern Zoology” added candidate families and experimental options. Four available turns from “Sensazioni di un elettrone” added the interaction/response context below. Other earlier context and prototype artifacts remain incomplete or unavailable. The [source inventory](source-inventory.md) records coverage and gaps.
 
 This note preserves motivation and distinguishes chosen direction from implementation proposals. The [ladder](ladder.md) remains the direction; the [roadmap](roadmap.md) tracks delivery.
 
@@ -60,9 +60,25 @@ The [plasmoid-ecology brief](experiments/plasmoid-ecology.md) preserves the prop
 
 ## A useful way to develop the POV idea
 
+### Recovered conversation: interaction, response, and reciprocity
+
+Source: “Sensazioni di un elettrone,” conversation `6ac16ae5-2c08-83ed-acff-65fc2fd2490c`, retrieved on 2026-10-04; [review coverage](source-inventory.md#electron-conversation-review-2026-10-04). The three substantive exchanges contain conceptual discussion, no code, numerical experiment, or measured result.
+
+**User framing.** The user imagined being an electron: “I feel a field which I react to,” then added “Azione e reazione” (action and reaction), and clarified by analogy with a human who encounters surrounding physics and responds. This supplies the interaction/response perspective. It does not select a numerical method or establish that an electron has subjective experience. The broader panpsychist origin recorded in the SELFS abstract should not erase this narrower clarification.
+
+**Assistant interpretation.** The assistant proposed treating minimal “feeling” as evolving differently because of coupling, without inserting a separate perception or decision step between field and response. It developed the user's action/reaction prompt into an electron ↔ field relationship: the electron responds to the field and also contributes to it. Momentum and energy exchanges, phase changes, and correlations were suggested as ways to describe that relationship. The assistant also invoked quantum-field language, scattering, emission/absorption, and decoherence; this was conceptual context, not a proposed quantum solver or evidence that the planned classical model supports those effects.
+
+**Speculation and unresolved questions.** The assistant sketched interaction → sensitivity → feedback → information integration → perception → subjective feeling?, with the final step explicitly uncertain. It asked both what distinguishes minimal “feeling” from simply being, and where physical response becomes subjective experience. These are philosophical questions, not an accepted causal hierarchy, a SELF detection criterion, or tested results. The retrieved discussion does not answer them.
+
+**Scientific qualification added in this review.** Reciprocity is a useful teaching perspective, but electromagnetic action/reaction should not imply that particle forces always form instantaneous equal-and-opposite pairs. Energy and momentum accounting includes the electromagnetic field and boundary exchanges; see [Feynman Lectures, II, chapter 27](https://www.feynmanlectures.caltech.edu/II_27.html), especially sections 27–2 and 27–6. This qualification is separate from what the conversation established.
+
+### Optional inspection direction and its limits
+
 As a design proposal, an entity-focused inspection could answer four questions: **what influences this entity, how does it respond, what does it exchange, and which relations persist?** Start with quantities actually supported by the model. Attach a view to simulation observations or an explicitly identified candidate; keep its provenance visible.
 
 This offers a route from the original intuition to an inspectable interface without requiring a new force law or an autonomous agent for every particle. It is an optional presentation direction, not an implemented feature or a requirement to add narrative text to every experiment.
+
+For the proposed [charge-separation oscillator](experiments/charge-separation.md), that view could show the collective displacement, velocity, restoring response, and energy budget. Its fixed ion background and lack of independently evolved spatial fields limit the correspondence: it cannot demonstrate a full electron–ion–electromagnetic-field exchange or an individual electron's quantum behavior. This is a scope tension to keep visible, not a reason to replace the first slice or silently widen its physics.
 
 ### Recovered IRSF proposal: meaning and open definitions
 
