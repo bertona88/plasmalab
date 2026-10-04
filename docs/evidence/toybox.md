@@ -53,7 +53,15 @@ Copied full-resolution JSON samples are deliberately adequate for this small sli
 
 ## Browser acceptance
 
-Browser acceptance and final build status are pending the integration run. The local sandbox can execute Rust and Node/WASM but Chromium launch exits with SIGTRAP; browser checks are configured for the repository's normal Linux CI environment. Do not infer a passed browser gate from the backend checks above.
+The first complete source tree, commit `3f56c73`, passed [CI run 37195274974](https://github.com/bertona88/plasmalab/actions/runs/37195274974): native Rust tests, Clippy, formatting, generated-contract agreement, WASM compilation, Svelte/TypeScript checks, production build, compiled-WASM integration and **8 browser tests (12.8 seconds)**. Svelte reported zero errors and zero warnings.
+
+The browser tests exercise run/pause/single-step/reset; pointer and keyboard/button disturbances; parameter and preset changes with real diagnostics; model assumptions; exact browser-local save/load across page reload; JSON export/import and subsequent continuation; malformed/unsupported checkpoint rejection without state mutation; storage failure and recovery; and a 390×844 viewport without horizontal overflow. All use the actual Rust/WASM worker. No fake model state is injected.
+
+The local sandbox executed Rust and Node/WASM checks, but its Chromium launch exited with SIGTRAP. Browser acceptance therefore ran on the normal Linux CI runner. Passing tests establish these specific interaction paths, not universal device support. The follow-up commit `a141dca` corrected contour saddle rendering and retained passing-run artifacts. It passed [CI run 37195535500](https://github.com/bertona88/plasmalab/actions/runs/37195535500), including all **8 browser tests in 13.6 seconds**. No scientific update rule changed between these commits.
+
+Both real browser screenshots were inspected: [desktop](toybox-desktop.png) and [390-pixel layout](toybox-narrow.png). Opposed field colors, flux contours, local activity, candidate markers and diagnostics are visible; controls and persistence sections have no clipping or overlap. The narrow layout places the experiment before the control panels. This is visual plausibility and interface review, not physical validation.
+
+The retained [browser progression record](toybox-browser.json) reports Chromium 141.0.7390.37 on the Linux x64 CI runner, four reported logical CPUs, and a 1280×720 viewport. The default tearing preset completed 60 displayed steps over 1.604934 seconds: **about 37.4 steps/second including scheduling and presentation**. The final paused/exported checkpoint was step 62 because an already requested batch completed. This short sample measures completed model progress, not rendering FPS or unrestricted solver throughput. The Windows user-agent string in the record comes from Playwright’s Desktop Chrome profile; it is not the host operating system. No specific desktop CPU or performance guarantee is inferred.
 
 ## Limits and next evidence
 

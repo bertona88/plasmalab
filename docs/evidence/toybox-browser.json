@@ -1,0 +1,51 @@
+{
+  "measuredAt": "2026-10-04T10:32:43.678Z",
+  "browserVersion": "141.0.7390.37",
+  "platform": "linux",
+  "architecture": "x64",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.7390.37 Safari/537.36",
+  "hardwareConcurrency": 4,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "model": "bounded-flux-toy",
+  "modelVersion": "1.0.0",
+  "preset": "tearing",
+  "grid": {
+    "width": 128,
+    "height": 80
+  },
+  "samples": [
+    {
+      "elapsedMs": 0,
+      "step": 0
+    },
+    {
+      "elapsedMs": 284.407118000001,
+      "step": 8
+    },
+    {
+      "elapsedMs": 558.911564,
+      "step": 20
+    },
+    {
+      "elapsedMs": 823.6667470000011,
+      "step": 30
+    },
+    {
+      "elapsedMs": 1083.7485750000014,
+      "step": 40
+    },
+    {
+      "elapsedMs": 1344.5054400000008,
+      "step": 50
+    },
+    {
+      "elapsedMs": 1604.934169,
+      "step": 60
+    }
+  ],
+  "finalStep": 62,
+  "interpretation": "UI-observed completed steps during an actual Rust/WASM run. Includes browser scheduling and presentation. Not solver-only throughput, rendering FPS, physical validation, or cross-device performance."
+}

@@ -21,14 +21,14 @@ The user’s 2026-10-04 implementation mission selected the [plasmoid/reconnecti
 - [x] Detect modest candidate regions as observations with frame-local labels and no evolution authority.
 - [x] Save a versioned checkpoint in IndexedDB, export/import it, and restore actual state with intervention history.
 - [x] Reject invalid state and unsupported save/model versions before replacing a run.
-- [ ] Complete the recorded scientific, build and browser acceptance checks in [toybox evidence](evidence/toybox.md).
+- [x] Complete the recorded scientific, build and browser acceptance checks in [toybox evidence](evidence/toybox.md).
 
 **Gate:** a person discovers a cause-and-effect relationship, saves it, and returns to it with assumptions and state intact. Passing invariant and interaction checks supports this toy loop; it does not validate physical reconnection or establish MHD/PIC accuracy.
 
 ## Rung 1 — Plasma Toybox
 
 - [x] Implement the first full toy loop above, with visible invented rules and limitations.
-- [ ] Use the recorded acceptance evidence to confirm the release gate, including browser resumption.
+- [x] Confirm the release gate with recorded browser resumption checks and desktop/narrow visual review.
 - [ ] Add further experiments only when each introduces a useful question and preserves the existing loop.
 
 ## Rung 2 — Browser Plasma Laboratory
