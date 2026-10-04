@@ -4,6 +4,8 @@ Read `docs/ladder.md` before architectural work. It is the direction; `docs/SELF
 
 Read `docs/project-context.md` for motivation and decision provenance. In particular, the first oscillator experiment is an assistant proposal, not a model choice mandated by the user or the ladder.
 
+Consult `docs/source-inventory.md` before relying on earlier chats or prototypes. A summarized or referenced source is not a reviewed original; recover missing material before treating its supposed decisions or results as established.
+
 ## Ownership
 
 - Rust owns scientific rules, assumptions, units, validation, and model semantics.

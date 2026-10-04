@@ -1,6 +1,8 @@
 # Project context and decision provenance
 
-Distilled from the project conversations and repository setup on 2026-10-03–04. This note preserves motivation and distinguishes chosen direction from implementation proposals. The [ladder](ladder.md) remains the direction; the [roadmap](roadmap.md) tracks delivery.
+Distilled from the supplied documents, available project-conversation summaries/excerpts, and the repository-setup discussion on 2026-10-03–04. Full earlier chats and prototype artifacts were not available. The [source inventory](source-inventory.md) records coverage and gaps.
+
+This note preserves motivation and distinguishes chosen direction from implementation proposals. The [ladder](ladder.md) remains the direction; the [roadmap](roadmap.md) tracks delivery.
 
 ## Why this project exists
 

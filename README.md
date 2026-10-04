@@ -8,6 +8,8 @@ Read [the ladder](docs/ladder.md) for the project direction and the [SELFS abstr
 
 The [project context](docs/project-context.md) preserves the motivation, distinguishes chosen direction from implementation proposals, and lists the open choices for the first experiment.
 
+The [source inventory](docs/source-inventory.md) identifies which earlier chats and documents are preserved, known only through summaries or references, or still missing. This repo is not yet a complete project-context handoff.
+
 ## Current state
 
 This is the repository foundation, before Rung 1. It includes a runnable Svelte project shell, a small dependency-free Rust scientific core, formatting, checks, and CI. The core validates named measurement requirements and distinguishes evidence and result kinds.
