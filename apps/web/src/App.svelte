@@ -736,7 +736,8 @@
         relative to the initial sheet. They are not proof of closed magnetic
         islands or validated SELFS. Labels are reassigned on each observation;
         they do not establish a structure’s identity, lifetime, splitting, or
-        merging.
+        merging. Up to 16 candidate rings are drawn to limit clutter; the
+        diagnostic count includes every detected candidate.
       </p>
     </section>
     <section>

@@ -1,8 +1,22 @@
-import { expect, test, type Page } from '@playwright/test';
-import { readFile } from 'node:fs/promises';
+import { expect, test, type Page, type TestInfo } from '@playwright/test';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { dirname } from 'node:path';
 import type { Snapshot } from '../apps/web/src/generated/model';
 
 const pageErrors = new WeakMap<Page, string[]>();
+
+async function attachArtifact(
+  info: TestInfo,
+  name: string,
+  options: { contentType: string; body: Buffer },
+) {
+  // Body-only attachments stay in the reporter's memory. Persist the actual
+  // evidence so CI's test-results upload contains passing-run screenshots too.
+  const path = info.outputPath(name);
+  await mkdir(dirname(path), { recursive: true });
+  await writeFile(path, options.body);
+  await info.attach(name, { path, contentType: options.contentType });
+}
 
 test.beforeEach(({ page }) => {
   const errors: string[] = [];
@@ -308,7 +322,7 @@ test('records real browser progression and a desktop view without imposing a spe
   await page.getByRole('button', { name: 'Pause', exact: true }).click();
   const final = await checkpoint(page);
   expect(final.state.step).toBeGreaterThan(samples[0].step);
-  await testInfo.attach('browser-evidence.json', {
+  await attachArtifact(testInfo, 'browser-evidence.json', {
     contentType: 'application/json',
     body: Buffer.from(
       JSON.stringify(
@@ -335,7 +349,7 @@ test('records real browser progression and a desktop view without imposing a spe
       ),
     ),
   });
-  await testInfo.attach('desktop-laboratory.png', {
+  await attachArtifact(testInfo, 'desktop-laboratory.png', {
     contentType: 'image/png',
     body: await page.screenshot({ fullPage: true }),
   });
@@ -359,7 +373,7 @@ test('the narrow viewport keeps the field and complete interaction usable', asyn
     .click();
   const state = await checkpoint(page);
   expect(state.experiment.interventions.at(-1)?.type).toBe('perturb');
-  await testInfo.attach('narrow-laboratory.png', {
+  await attachArtifact(testInfo, 'narrow-laboratory.png', {
     contentType: 'image/png',
     body: await page.screenshot({ fullPage: true }),
   });

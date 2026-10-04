@@ -153,6 +153,15 @@ export function createFieldRenderer(canvas: HTMLCanvasElement) {
                     sy,
                 ]);
               }
+              if (crossings.length === 4) {
+                // Resolve the saddle with the bilinear interpolant's
+                // asymptotic decider instead of arbitrary edge pairing.
+                const determinant =
+                  (values[0] - level) * (values[2] - level) -
+                  (values[1] - level) * (values[3] - level);
+                if (determinant < 0)
+                  [crossings[1], crossings[3]] = [crossings[3], crossings[1]];
+              }
               for (let index = 0; index + 1 < crossings.length; index += 2) {
                 ctx.moveTo(crossings[index][0], crossings[index][1]);
                 ctx.lineTo(crossings[index + 1][0], crossings[index + 1][1]);
