@@ -1,0 +1,26 @@
+{
+  "name": "plasmalab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @plasmalab/web",
+    "build": "npm run build --workspace @plasmalab/web",
+    "preview": "npm run preview --workspace @plasmalab/web",
+    "check": "npm run check --workspace @plasmalab/web",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:rust": "cargo fmt --all --check && cargo clippy --workspace --all-targets --locked -- -D warnings && cargo test --workspace --locked",
+    "verify": "npm run format:check && npm run check && npm run build && npm run check:rust"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2",
+    "prettier-plugin-svelte": "3.4.0"
+  }
+}
