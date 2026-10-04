@@ -1,6 +1,6 @@
 # Project context and decision provenance
 
-Distilled from the supplied documents, available project-conversation summaries/excerpts, and the repository-setup discussion on 2026-10-03–04. On 2026-10-04, five retrieved turns from “Electron Experience Imagined” added the IRSF proposal below. Earlier context and prototype artifacts remain unavailable. The [source inventory](source-inventory.md) records coverage and gaps.
+Distilled from the supplied documents, available project-conversation summaries/excerpts, and the repository-setup discussion on 2026-10-03–04. On 2026-10-04, five retrieved turns from “Electron Experience Imagined” added the IRSF proposal below, and five available turns from “Plasma Pattern Zoology” added candidate families and experimental options. Other earlier context and prototype artifacts remain incomplete or unavailable. The [source inventory](source-inventory.md) records coverage and gaps.
 
 This note preserves motivation and distinguishes chosen direction from implementation proposals. The [ladder](ladder.md) remains the direction; the [roadmap](roadmap.md) tracks delivery.
 
@@ -25,6 +25,38 @@ The [SELFS abstract](SELFS_WOFI_abstract.md) makes the operational move: seek or
 | Intrinsic–Relational Simulation Framework (IRSF) and an “interior” renderer                                                            | Assistant speculation responding to the user’s request in “Electron Experience Imagined”          | Preserve as conceptual motivation and optional interpretation; no implementation or validation, and no user adoption shown in the retrieved turns. |
 
 The oscillator proposal should not quietly become the project’s scientific destination. Its purpose is to exercise interaction, numerical comparison, and persistence. It does not itself test structure formation or SELF discovery. A richer model needs an explicit correspondence with that teaching experiment.
+
+## Plasma Pattern Zoology: candidate identity, not just recurring shapes
+
+In “Plasma Pattern Zoology” (2026-10-04), the user asked about the cellular-automaton resemblance of recursive plasmoid formation, solar plasmoids, and finally the **zoology of SELFS in plasmas**. These questions establish the interest in persistent organizations. The candidate classification, toy rules, diagnostic axes, and detector display below were assistant proposals; the available turns contain no user adoption of a particular solver or scoring scheme, no executable artifact, and no measured result.
+
+The useful research question is whether describing a structure as an entity improves prediction of its future and exchanges compared with treating it as an arbitrary region. Persistence of relations despite constituent turnover motivates the question; appearance or a species label does not answer it.
+
+The assistant organized candidates by the proposed **carrier of continuity**. These are overlapping research lenses, not an exhaustive taxonomy, biological ancestry, or a claim that every named structure meets the operational SELF criterion:
+
+| Lens        | Candidates suggested in the chat                       | Organization to investigate                                                                                                                                                                                       |
+| ----------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Topological | Plasmoids, magnetic islands, flux ropes                | Field geometry/topology, currents, magnetic flux, and twist; proposed history: formation by tearing, growth, merger, or ejection.                                                                                 |
+| Flow        | Vortices, zonal flows, streamers                       | Circulation, vorticity, or a shear profile that persists as constituents change.                                                                                                                                  |
+| Transport   | Blobs, filaments                                       | A localized density/pressure profile, polarization, and coherent transport. The sketched blob state was `(n, T, R, v, φ, orientation)`; units, the meaning of `R`, and predictive sufficiency were not specified. |
+| Boundary    | Current sheets, double layers, shocks, sheaths         | A persistent relation between environments: field reversal/current or a potential structure. A material membrane is not required.                                                                                 |
+| Kinetic     | Phase-space holes, trapped populations                 | Organization in a distribution such as `f(x, v)`; a spatial outline alone may omit the relevant identity.                                                                                                         |
+| Wave        | Solitons, coherent mode/wave packets, Alfvénic packets | Phase/amplitude relations or a proposed nonlinear–dispersive balance, with finite validity.                                                                                                                       |
+| Composite   | Assemblies containing several candidate structures     | Nested organization and changing lineage: sheets fragment into islands; candidates merge into a successor. Containment, interaction, and descent remain different relations.                                      |
+
+These cues came from the assistant's scientific discussion, whose citation targets were not recoverable in the reviewed text. They need model-specific definitions and literature grounding before use as detector or closure assumptions. In particular, the chat cautioned against treating a 2D magnetic island picture as the literal geometry of a 3D flux rope.
+
+### Proposed diagnostics and an inspectable history
+
+The assistant suggested a profile `(P, B, M, A, R)`: persistence, boundedness/identifiability, memory, autonomy relative to immediate forcing, and regeneration after perturbation. Treat these as questions to operationalize, not an established measurement scale or universal “selfhood” score. Boundedness can refer to separability in the relevant representation; it must not become a requirement for a closed spatial body.
+
+The illustrative profiles for a linear wave, blob, and plasmoid were arbitrary ordinal sketches, not comparative evidence. Likewise, a mock inspector showing a current-sheet age of `4.3 τ_A`, “predictability: 0.91,” three internal modes, and `TEARING` status was a product illustration, not a run. A future inspector could show candidate identity, age, the evidence for continuity, and split/merge history while the reference fields continue evolving. Any prediction display must instead identify its observable, horizon, error measure, and evaluated data, as required by the ladder.
+
+The solar and _Sundiver_ discussion supplied an evocative analogy. Organized plasma is not evidence of life, intelligence, or subjective experience. The numerical solar-observation claims are unrecovered reported claims, not repository evidence; see the source inventory.
+
+### Relationship to current scope
+
+The [plasmoid-ecology brief](experiments/plasmoid-ecology.md) preserves the proposed CA-like rules and a possible physical comparison. It is a research option, not a replacement for the first slice or the abstract's driven electron–ion benchmark. A comprehensive taxonomy remains deferred by the ladder. The chat's particle-to-one-blob compression illustration does not establish a compression ratio or speedup, and entity detection does not grant evolution authority.
 
 ## A useful way to develop the POV idea
 
