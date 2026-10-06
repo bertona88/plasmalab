@@ -10,6 +10,8 @@ The [project context](docs/project-context.md) preserves the motivation, disting
 
 The [source inventory](docs/source-inventory.md) identifies which earlier chats and documents are preserved, known only through summaries or references, or still missing. This repo is not yet a complete project-context handoff.
 
+The [SELFS/ML convergence assessment](docs/research/2026-10-06-selfs-ml-convergence.md) evaluates the [attention notebook](docs/research/2026-10-05-attention-selfs-divergence.md) against current plasma ML research. It ranks the ideas and proposes a controlled comparison of learned representations; it records research recommendations, not an implemented model or an adopted architecture.
+
 ## Current state
 
 This is the repository foundation, before Rung 1. It includes a runnable Svelte project shell, a small dependency-free Rust scientific core, formatting, checks, and CI. The core validates named measurement requirements and distinguishes evidence and result kinds.

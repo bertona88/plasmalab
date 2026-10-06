@@ -133,3 +133,11 @@ Import the missing chat exports and original prototype files when provided. For 
 For prototypes, preserve the original artifact and provenance, identify the model and dependencies, inspect the code and result-generation procedure, and reproduce relevant checks before promoting any claim into [evidence](evidence/README.md). Keep reported results distinguishable from independently reproduced results.
 
 The goal is a self-contained project handoff: enough reasoning and reproducible material to continue the work without access to the original chats. It does not require copying every conversational turn. Keep this inventory current as sources are recovered, and link extracted decisions to their basis.
+
+## Attention and SELFS convergence review, 2026-10-06
+
+The user requested an assessment of commit [c1799d1](https://github.com/bertona88/plasmalab/commit/c1799d183b165e358b9f40a94563f10a90d6430d): what to retain, what can be computed, how current HEDP machine learning relates, whether a generic network should learn the representation, and a possible network design.
+
+The review read that commit's complete [divergent notebook](research/2026-10-05-attention-selfs-divergence.md), repository guidance, the ladder, project context, this inventory, foundation decision, roadmap, driven-plasma brief, Rust requirement/result definitions, and browser shell. The attached SELFS abstract and ladder matched the preserved repository versions by Git blob hash. No additional original chat history, prototype, or result artifact was recovered.
+
+The [convergence assessment](research/2026-10-06-selfs-ml-convergence.md) records a targeted primary-source literature review through 2026-10-06, including publication status and limitations, followed by assistant rankings and proposed experiments. Its recommendations are not user-adopted architecture decisions. The review performed no plasma simulation, network training, or reproduction of external results; it establishes no speedup or novelty. The original divergence notebook remains an unranked historical source.
